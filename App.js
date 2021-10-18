@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function HomeScreen({ navigation }) {
   let Image_Http_URL ={ uri: 'https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'};
@@ -112,7 +113,66 @@ function InscriptionScreen2({ navigation }) {
 function DiscoverScreen({ navigation }) {
   return (
     <View style={{ flex: 1,}}>
-      <Text>test</Text>
+      <View style={styles.discoverheader}>
+        <Text style={{fontSize: 55, marginBottom: 30,}}>Discover</Text>
+      </View>
+      <View style={styles.discovercontainer}>
+        <Text style={{fontWeight: 'bold', textTransform: 'uppercase'}}>what's new today</Text>
+        <View>
+          <Text>test</Text>
+        </View>
+        <Text style={{fontWeight: 'bold', textTransform: 'uppercase', marginTop: 30}}>BROWSE ALL</Text>
+      </View>
+      <View style={{flex: 1, flexDirection:"row", position: 'absolute', left: 0, right: 0, bottom: 0, height: 90, width: '100%', borderTopColor: 'rgba(0, 0, 0, 0.3)', borderTopWidth: 1,}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Discover')} style={{flex : 1,}}>
+          <View style={{flex : 1, width: '100%'}}>
+            <Text style={{textAlign: 'center', marginTop: 30,}}>🏠</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={{flex : 0.1, backgroundColor:""}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('Search')} style={{flex : 1,}}>
+          <View style={{flex : 1, width: '100%'}}>
+            <Text style={{textAlign: 'center', marginTop: 30,}}>🔎</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={{flex : 0.5, backgroundColor:""}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('Discover')} style={{flex : 1,}}>
+          <View style={{flex : 2, width: '100%',}}>
+            <LinearGradient
+              // Button Linear Gradient
+              colors={['#FF00D6', '#FF4D00']}
+              style={{marginTop: 20, borderRadius: 20, height: 40,}}>
+              <Text style={{textAlign: 'center', marginTop: 0, fontSize: 30, color: 'white'}}>+</Text>
+            </LinearGradient>
+          </View>
+        </TouchableOpacity>
+        <View style={{flex : 0.5, backgroundColor:""}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('Discover')} style={{flex : 1,}}>
+          <View style={{flex : 1, width: '100%'}}>
+            <Text style={{textAlign: 'center', marginTop: 30,}}>💬</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={{flex : 0.1, backgroundColor:""}}/>
+        <TouchableOpacity onPress={() => navigation.navigate('Discover')} style={{flex : 1,}}>
+          <View style={{flex : 1, width: '100%'}}>
+            <Text style={{textAlign: 'center', marginTop: 30,}}>👤</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+function SearchScreen1({ navigation }) {
+  return (
+    <View style={{ flex: 1,}}>
+      <View style={styles.searchcontainer}>
+        <Text style={{fontSize: 55, marginBottom: 30,}}>Search</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Search all photos"
+        />
+      </View>
     </View>
   );
 }
@@ -128,12 +188,14 @@ function App() {
         <Stack.Screen name="Inscription1" component={InscriptionScreen1} />
         <Stack.Screen name="Inscription2" component={InscriptionScreen2} />
         <Stack.Screen name="Discover" component={DiscoverScreen} />
+        <Stack.Screen name="Search" component={SearchScreen1} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 export default App;
+
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -176,6 +238,22 @@ var styles = StyleSheet.create({
   },
   inscriptioncontainer: {
     width: '100%',
+    padding: 20,
+  },
+  discoverheader: {
+    width: '100%',
+    marginTop: 50,
+    marginBottom: -20,
+    padding: 20,
+  },
+  discovercontainer: {
+    width: '100%',
+    paddingLeft: 25,
+    paddingRight: 25,
+  },
+  searchcontainer: {
+    width: '100%',
+    marginTop: 50,
     padding: 20,
   },
 });
